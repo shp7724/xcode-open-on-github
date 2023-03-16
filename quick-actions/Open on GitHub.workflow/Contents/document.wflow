@@ -60,7 +60,7 @@
 		set endLine to get item 2 of currentLines
 	end tell
 	
-	set repositoryUrl to do shell script "cd \"$(dirname '" &amp; activeDocumentPath &amp; "')\"; git remote -v | grep fetch | awk '{print $2}' | sed 's/ssh:\\/\\/git@/https:\\/\\//' | sed 's/git@/https:\\/\\//' | sed 's/com:/com\\//' | sed 's/\\.git//'"
+	set repositoryUrl to do shell script "cd \"$(dirname '" &amp; activeDocumentPath &amp; "')\"; git remote -v | grep fetch | awk '{print $2}' | tail -1 | sed 's/ssh:\\/\\/git@/https:\\/\\//' | sed 's/git@/https:\\/\\//' | sed 's/com:/com\\//' | sed 's/\\.git//'"
 	
 	set pathToRepositoryDirLocation to do shell script "cd \"$(dirname '" &amp; activeDocumentPath &amp; "')\"; git rev-parse --show-toplevel "
 	
